@@ -16,6 +16,8 @@
         <div class="box-header with-border">
           <h3 class="box-title">Editar Usuário</h3>
         </div>
+
+
         <!-- /.box-header -->
         <!-- form start -->
         <form role="form" action="/admin/users/<?php echo htmlspecialchars( $user["iduser"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" method="post">
@@ -44,7 +46,10 @@
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+            <button type="submit" class="btn btn-success"> Salvar</button>
+            <a href="/admin/users">
+              <button type="button" class="btn btn-primary" > Retornar </button>
+            </a>
           </div>
         </form>
       </div>
