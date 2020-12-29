@@ -1,0 +1,76 @@
+<?php
+
+namespace Hcode\Model;
+
+use \Hcode\DB\Sql; 
+use \Hcode\Model;
+
+class Category extends Model{
+
+	
+		public static function listAll()
+		{
+
+				$sql = new Sql(); 
+
+				return $sql->select("SELECT * FROM tb_categories ORDER BY descategory"); 
+
+		}
+
+
+		public function save()
+		{
+				$sql = new Sql();
+
+				/* sequencia da PROCEDURE SP_CATEGORIES_SAVE
+				pdescategoty VARCHAR(64)
+				*/
+
+				$results = $sql->select("CALL sp_categories_save(:idcategory, :descategory)",
+					array(
+						":idcategory"=>$this->getidcategory(), 
+						":descategory"=>$this->getdescategory()
+
+				));
+
+				$this->setData($results[0]); 
+
+		}
+
+		public function get($idcategory)
+		{
+				$sql = new Sql();
+
+				$results = $sql->select("SELECT * FROM tb_categories WHERE idcategory = :id_category", array(
+						":id_category"=>$idcategory
+				));
+
+				$this->setData($results[0]); 
+
+		}
+
+
+		public function update()
+		{
+				$sql = new Sql();
+
+				$sql->select("UPDATE tb_categories SET descategory = :descategory WHERE idcategory = :idcategory",
+					array(
+						":idcategory"=>$this->getidcategory(), 
+						":descategory"=>$this->getdescategory()
+				));
+
+		}
+
+		public function delete()
+		{
+				$sql = new Sql();
+
+				$results = $sql->select("DELETE FROM tb_categories WHERE idcategory = :idcategory",
+					array(
+						":idcategory"=>$this->getidcategory(), 
+				));
+
+		}
+
+}
