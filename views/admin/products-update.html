@@ -61,13 +61,20 @@
                   <option value = "{$control_select.no}">
                      {if="$control_select.no =='N'"} NÃO {/if}  </option>
                 {/if}
-                
               </select>
             </div>
 
-
+            <div class="form-group">
+              <label for="file">Foto</label>
+              <input type="file" class="form-control" id="file" name="file" value="{$product_up.vlweight}">
+              <div class="box box-widget">
+                <div class="box-body">
+                  <img class="img-responsive" id="image-preview" src="{$product_up.desphoto}" alt="Photo">
+                </div>
+              </div>
+            </div>
           </div>
-          </div>
+      
           <!-- /.box-body -->
           <div class="box-footer">
             <button type="submit" class="btn btn-success">Salvar</button>

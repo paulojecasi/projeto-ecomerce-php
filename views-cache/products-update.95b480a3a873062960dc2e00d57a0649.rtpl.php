@@ -65,13 +65,20 @@
                      <?php if( $control_select["no"] =='N' ){ ?> NÃO <?php } ?>  </option>
                 <?php } ?>
 
-                
               </select>
             </div>
 
-
+            <div class="form-group">
+              <label for="file">Foto</label>
+              <input type="file" class="form-control" id="file" name="file" value="<?php echo htmlspecialchars( $product_up["vlweight"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+              <div class="box box-widget">
+                <div class="box-body">
+                  <img class="img-responsive" id="image-preview" src="<?php echo htmlspecialchars( $product_up["desphoto"], ENT_COMPAT, 'UTF-8', FALSE ); ?>" alt="Photo">
+                </div>
+              </div>
+            </div>
           </div>
-          </div>
+      
           <!-- /.box-body -->
           <div class="box-footer">
             <button type="submit" class="btn btn-success">Salvar</button>

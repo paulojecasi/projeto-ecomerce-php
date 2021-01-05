@@ -72,7 +72,6 @@ $app->get("/admin/products/:idproduct/delete", function($idproduct)
 });
 
 
-
 // tela de update do produto
 $app->get("/admin/products/:idproduct", function($idproduct)
 {
@@ -94,7 +93,7 @@ $app->get("/admin/products/:idproduct", function($idproduct)
 });
 
 // update do produto
-$app->post("/admin/products/:idcategory", function($idproduct)
+$app->post("/admin/products/:idproduct", function($idproduct)
 {
 
 	User::verifyLogin(); 
@@ -106,6 +105,8 @@ $app->post("/admin/products/:idcategory", function($idproduct)
 	$product->setData($_POST);
 
 	$product->update(); 
+
+	$product->setPhoto($_FILES["file"]);
 
 	header("Location: /admin/products"); 
 	exit; 
