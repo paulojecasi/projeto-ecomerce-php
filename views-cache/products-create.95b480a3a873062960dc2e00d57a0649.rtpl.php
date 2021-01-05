@@ -51,12 +51,27 @@
             </div>
             <div class="form-group">
               <label for="desurl"> URL </label>
-              <input type="text" class="form-control" id="desurl" name="desurl"  placeholder="Digite a URL do Produto">
+              <input type="url" class="form-control" id="desurl" name="desurl">
+            </div>
+
+            <div class="form-group">
+              <label for="actproduct"> Produto Ativo? </label>
+              <select class="form-control" id="actproduct" name="actproduct">
+               
+                  <option value ="<?php echo htmlspecialchars( $control_select["yes"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                       <?php if( $control_select["yes"] =='S' ){ ?> SIM <?php } ?>  </option>
+                       
+                  <option value = "<?php echo htmlspecialchars( $control_select["no"], ENT_COMPAT, 'UTF-8', FALSE ); ?>">
+                       <?php if( $control_select["no"] =='N' ){ ?> NÃO <?php } ?>  </option>
+              
+              </select>
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
+            
             <button type="submit" class="btn btn-success">Cadastrar</button>
+
             <a = href= "/admin/products">
               <button type="button" class="btn btn-primary"> Retornar </button>
             </a>

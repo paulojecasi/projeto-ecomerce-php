@@ -51,12 +51,27 @@
             </div>
             <div class="form-group">
               <label for="desurl"> URL </label>
-              <input type="text" class="form-control" id="desurl" name="desurl"  placeholder="Digite a URL do Produto">
+              <input type="url" class="form-control" id="desurl" name="desurl">
+            </div>
+
+            <div class="form-group">
+              <label for="actproduct"> Produto Ativo? </label>
+              <select class="form-control" id="actproduct" name="actproduct">
+               
+                  <option value ="{$control_select.yes}">
+                       {if="$control_select.yes =='S'"} SIM {/if}  </option>
+                       
+                  <option value = "{$control_select.no}">
+                       {if="$control_select.no =='N'"} NÃO {/if}  </option>
+              
+              </select>
             </div>
           </div>
           <!-- /.box-body -->
           <div class="box-footer">
+            
             <button type="submit" class="btn btn-success">Cadastrar</button>
+
             <a = href= "/admin/products">
               <button type="button" class="btn btn-primary"> Retornar </button>
             </a>

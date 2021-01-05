@@ -28,7 +28,11 @@ $app->get("/admin/products/create", function()
 
 	$page = new PageAdmin();
 
-	$page->setTPL("products-create"); 
+	$control = Product::controlSelect(); 
+
+	$page->setTPL("products-create", array(
+		"control_select" => $control
+	)); 
 
 });
 
@@ -48,5 +52,65 @@ $app->post("/admin/products/create", function()
 	exit; 
 
 });
+
+
+//deletar produtos
+$app->get("/admin/products/:idproduct/delete", function($idproduct)
+{
+
+	User::verifyLogin(); 
+
+	$product= new Product();
+
+	$product->get((int)$idproduct); 
+
+	$product->delete(); 
+
+	header("Location: /admin/products"); 
+	exit; 
+
+});
+
+
+
+// tela de update do produto
+$app->get("/admin/products/:idproduct", function($idproduct)
+{
+	User::verifyLogin(); 
+	
+	$product= new Product(); 
+
+	$control= $product::controlSelect(); 
+
+	$product->get((int)$idproduct); 
+
+	$page = new PageAdmin();
+
+	$page->setTPL("products-update", array(
+			"product_up"=>$product->getData(), 
+			"control_select"=>$control
+	)); 
+
+});
+
+// update do produto
+$app->post("/admin/products/:idcategory", function($idproduct)
+{
+
+	User::verifyLogin(); 
+
+	$product = new Product();
+
+	$product->get((int)$idproduct); 
+
+	$product->setData($_POST);
+
+	$product->update(); 
+
+	header("Location: /admin/products"); 
+	exit; 
+
+
+}); 
 
 ?> 
